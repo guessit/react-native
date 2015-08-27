@@ -26,6 +26,9 @@ var GuessIt = React.createClass({
           Press Cmd+R to reload,{'\n'}
           Cmd+D or shake for dev menu
         </Text>
+        <Text style={styles.title}>
+          Guess It!
+        </Text>
       </View>
     );
   }
@@ -47,6 +50,10 @@ var styles = StyleSheet.create({
     textAlign: 'center',
     color: '#333333',
     marginBottom: 5,
+  },
+  title: {
+    fontSize: 30,
+    color: '#ff0000'
   },
 });
 
