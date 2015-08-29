@@ -1,5 +1,26 @@
 'use strict';
 
-var MainScene = require('./scenes/MainScene');
+var React = require('react-native');
+var {
+  StyleSheet
+} = React;
 
-module.exports = MainScene;
+var Router = require('./Router');
+
+class App extends React.Component {
+
+  render() {
+    return (
+      <Router style={styles.container} />
+    );
+  }
+
+}
+
+var styles = StyleSheet.create({
+  container: {
+    flex: 1
+  }
+});
+
+module.exports = App;

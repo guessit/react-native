@@ -10,13 +10,38 @@ var {
 
 class MainScene extends React.Component {
 
-  constructor(props: {}) {
-    super(props);
+  componentWillMount() {
+    var navigator = this.props.navigator;
+
+    if (navigator) {
+      var adjustNavigationBar = (event) => {
+        switch (event.data.route.id) {
+          case 'level_scene':
+            this.props.showNavigationBar();
+            break;
+          default:
+            this.props.hideNavigationBar();
+            break;
+        }
+      };
+
+      this._listeners = [
+        navigator.navigationContext.addListener('willfocus', adjustNavigationBar),
+        navigator.navigationContext.addListener('didfocus', adjustNavigationBar)
+      ];
+    }
+  }
+
+  componentWillUnmount() {
+    this._listeners && this._listeners.forEach(listener => listener.remove());
   }
 
   render() {
     return (
-      <View style={styles.container}>
+      <View
+        style={styles.container}
+        onTouchStart={(event) => this._handleTouchStart(event)}
+      >
         <Image
           style={styles.backgroundImage}
           source={require('image!main_background')}>
@@ -25,6 +50,13 @@ class MainScene extends React.Component {
         </Image>
       </View>
     );
+  }
+
+  _handleTouchStart(event: Object) {
+    this.props.navigator.push({
+      id: 'level_scene',
+      title: 'Guess It!'
+    });
   }
 }
 
