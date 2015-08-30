@@ -74,8 +74,7 @@ class Router extends React.Component {
     var props = {
       style: styles.container,
       initialRoute: {
-        id: 'level_scene',
-        title: 'Guess It!'
+        id: 'main_scene'
       },
       renderScene: (route, nav) => {
         switch (route.id) {
