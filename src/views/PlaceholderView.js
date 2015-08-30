@@ -47,7 +47,7 @@ var styles = StyleSheet.create({
   placeholder: {
     color: '#89ff00',
     fontFamily: 'AvenirNextCondensed-Medium',
-    fontSize: 22,
+    fontSize: 22
   }
 });
 
