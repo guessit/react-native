@@ -7,11 +7,22 @@ var {
   Image
 } = React;
 
+var Images = require('./../constants/Images');
 var AnswerView = require('./../views/AnswerView');
 var KeypadView = require('./../views/KeypadView');
 
 class LevelScene extends React.Component {
   render() {
+//    var level = {
+//      answer: 'Super Mario',
+//      image: '061'
+//    };
+
+    var level = {
+      answer: 'F Zero'.toUpperCase(),
+      image: '024'
+    };
+
     return (
       <View
         style={styles.container}
@@ -21,11 +32,11 @@ class LevelScene extends React.Component {
         >
           <Image
             style={styles.image}
-            source={require('image!061')}
+            source={Images[level.image]}
           />
         </View>
-        <AnswerView />
-        <KeypadView />
+        <AnswerView answer={level.answer} />
+        <KeypadView answer={level.answer} />
       </View>
     )
   }

@@ -14,7 +14,7 @@ var LevelScene = require('./scenes/LevelScene');
 var NavigationBarRouteMapper = {
 
   LeftButton: function(route, navigator, index, navState) {
-    if (index === 0) {
+    if (route.id === 'main_scene') {
       return null;
     }
 
@@ -31,7 +31,7 @@ var NavigationBarRouteMapper = {
   },
 
   RightButton: function(route, navigator, index, navState) {
-    if (index === 0) {
+    if (route.id === 'main_scene') {
       return null;
     }
 
@@ -48,7 +48,7 @@ var NavigationBarRouteMapper = {
   },
 
   Title: function(route, navigator, index, navState) {
-    if (index === 0) {
+    if (route.id === 'main_scene') {
       return null;
     }
 
@@ -66,14 +66,17 @@ class Router extends React.Component {
   constructor(props: {}) {
     super(props);
     this.state = {
-      isNavigationBarHidden: true
+      isNavigationBarHidden: false
     };
   }
 
   render() {
     var props = {
       style: styles.container,
-      initialRoute: { id: 'main_scene' },
+      initialRoute: {
+        id: 'level_scene',
+        title: 'Guess It!'
+      },
       renderScene: (route, nav) => {
         switch (route.id) {
           case 'level_scene':

@@ -19,6 +19,10 @@ class KeypadView extends React.Component {
   }
 }
 
+KeypadView.propTypes = {
+  answer: React.PropTypes.string.isRequired
+};
+
 var styles = StyleSheet.create({
   container: {
     backgroundColor: '#121212',

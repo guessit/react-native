@@ -7,23 +7,47 @@ var {
   View
 } = React;
 
+var PlaceholderView = require('./PlaceholderView');
+
 class AnswerView extends React.Component {
   render() {
+    var letters = this.props.answer.split('');
+    var placeholderItems = letters.map((letter, idx) => {
+      if (letter === ' ') {
+        return null;
+      }
+
+      return (
+        <PlaceholderView
+          key={`${idx}-${letter}`}
+          letter={letter}
+          spaced={letters[idx-1] === ' '}
+        />
+      );
+    });
+
     return (
       <View
         style={styles.container}
       >
-        <Text>Answer View</Text>
+        {placeholderItems}
       </View>
     );
   }
 }
 
+AnswerView.propTypes = {
+  answer: React.PropTypes.string.isRequired
+};
+
 var styles = StyleSheet.create({
   container: {
-    backgroundColor: '#181818',
+    alignItems: 'center',
     alignSelf: 'stretch',
-    height: 70
+    backgroundColor: '#181818',
+    flexDirection: 'row',
+    height: 70,
+    justifyContent: 'center'
   }
 });
 
